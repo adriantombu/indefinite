@@ -1,4 +1,6 @@
-[![crates.io](https://img.shields.io/crates/v/indefinite.svg)](https://crates.io/crates/indefinite)
+[![crates.io](https://img.shields.io/crates/v/indefinite.svg)](https://crates.io/crates/indefinite) [![docs.rs](https://img.shields.io/docsrs/indefinite/latest.svg)](https://docs.rs/indefinite/latest/indefinite/index.html)
+
+
 
 # indefinite
 

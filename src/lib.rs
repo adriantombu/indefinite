@@ -1,21 +1,99 @@
+//! Prefix a noun with an indefinite article - a or an - based on whether it begins with a vowel.
+//!
+//! # Examples
+//!
+//! Returns the input string with the article related to the first word
+//! ```
+//! use indefinite::indefinite;
+//!
+//! assert_eq!(indefinite("honor"), "an honor");
+//! assert_eq!(indefinite("euro"), "a euro");
+//! ```
+//!
+//! Returns the input string with the article related to the first word with the first letter capitalised
+//! ```
+//! use indefinite::indefinite_capitalized;
+//!
+//! assert_eq!(indefinite_capitalized("apple"), "An apple");
+//! assert_eq!(indefinite_capitalized("banana"), "A banana");
+//! ```
+//!
+//! Returns only the article related to the first word
+//! ```
+//! use indefinite::indefinite_article_only;
+//!
+//! assert_eq!(indefinite_article_only("apple"), "an");
+//! assert_eq!(indefinite_article_only("pear"), "a");
+//! ```
+//!
+//! Returns only the article related to the first word with the first letter capitalised
+//! ```
+//! use indefinite::indefinite_article_only_capitalized;
+//!
+//! assert_eq!(indefinite_article_only_capitalized("apple"), "An");
+//! assert_eq!(indefinite_article_only_capitalized("pear"), "A");
+//! ```
+
 mod helper;
 mod irregular;
 mod rules;
 
 use crate::helper::Helper;
 
+/// Returns the input string with the article related to the first word
+///
+/// # Examples
+///
+/// ```
+/// use indefinite::indefinite;
+///
+/// assert_eq!(indefinite("honor"), "an honor");
+/// assert_eq!(indefinite("euro"), "a euro");
+/// assert_eq!(indefinite("ukulele"), "a ukulele");
+/// assert_eq!(indefinite("ouija board"), "a ouija board");
+/// ```
 pub fn indefinite(sentence: &str) -> String {
     format!("{} {}", apply_rules(sentence), sentence)
 }
 
+/// Returns the input string with the article related to the first word with the first letter capitalised
+///
+/// # Examples
+///
+/// ```
+/// use indefinite::indefinite_capitalized;
+///
+/// assert_eq!(indefinite_capitalized("apple"), "An apple");
+/// assert_eq!(indefinite_capitalized("banana"), "A banana");
+/// ```
 pub fn indefinite_capitalized(sentence: &str) -> String {
     Helper::capitalize(&format!("{} {}", apply_rules(sentence), sentence))
 }
 
+/// Returns only the article related to the first word
+///
+/// # Examples
+///
+/// ```
+/// use indefinite::indefinite_article_only;
+///
+/// assert_eq!(indefinite_article_only("apple"), "an");
+/// assert_eq!(indefinite_article_only("pear"), "a");
+/// ```
 pub fn indefinite_article_only(sentence: &str) -> String {
     apply_rules(sentence)
 }
 
+/// Returns only the article related to the first word with the first letter capitalised
+///
+/// # Examples
+///
+/// ```
+/// use indefinite::indefinite_article_only_capitalized;
+///
+/// assert_eq!(indefinite_article_only_capitalized("apple"), "An");
+/// assert_eq!(indefinite_article_only_capitalized("pear"), "A");
+/// ```
 pub fn indefinite_article_only_capitalized(sentence: &str) -> String {
     Helper::capitalize(&apply_rules(sentence))
 }
@@ -30,10 +108,6 @@ fn apply_rules(sentence: &str) -> String {
     } else {
         rules::other::Other::run(word)
     }
-}
-
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
 }
 
 #[cfg(test)]
