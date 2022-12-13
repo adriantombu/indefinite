@@ -1,3 +1,5 @@
+[![crates.io](https://img.shields.io/crates/v/indefinite.svg)](https://crates.io/crates/indefinite)
+
 # indefinite
 
 > This crate is a port of the [JavaScript library indefinite](https://github.com/tandrewnichols/indefinite), thanks to the original authors of this library!
@@ -20,7 +22,7 @@ assert_eq!(indefinite("ouija board"), "a ouija board");
 ```
 
 ```rust
-use indefinite::test_indefinite_capitalized;
+use indefinite::indefinite_capitalized;
 
 assert_eq!(indefinite_capitalized("apple"), "An apple");
 assert_eq!(indefinite_capitalized("banana"), "A banana");
@@ -35,7 +37,7 @@ assert_eq!(indefinite_article_only("pear"), "a");
 
 
 ```rust
-use indefinite::test_indefinite_article_only_capitalized;
+use indefinite::indefinite_article_only_capitalized;
 
 assert_eq!(indefinite_article_only_capitalized("apple"), "An");
 assert_eq!(indefinite_article_only_capitalized("pear"), "A");
