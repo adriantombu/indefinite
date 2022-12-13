@@ -1,0 +1,14 @@
+[package]
+name = "indefinite"
+version = "0.1.0"
+edition = "2021"
+authors = ["Adrian Tombu <adrian@otso.fr>"]
+keywords = [ "article", "a", "an", "grammar", "noun" ]
+categories = [ "text-processing" ]
+description = "Prefix a noun with an indefinite article - a or an - based on whether it begins with a vowel"
+license = "MIT"
+repository = "https://github.com/adriantombu/indefinite"
+include = ["/src", "LICENSE.md", "README.md"]
+
+[dependencies]
+regex = "1.7.0"
