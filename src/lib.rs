@@ -36,9 +36,11 @@
 
 mod helper;
 mod irregular;
+#[cfg(feature = "macros")]
+#[macro_use]
+mod macros;
+mod methods;
 mod rules;
-
-use crate::helper::Helper;
 
 /// Returns the input string with the article related to the first word
 ///
@@ -53,7 +55,7 @@ use crate::helper::Helper;
 /// assert_eq!(indefinite("ouija board"), "a ouija board");
 /// ```
 pub fn indefinite(sentence: &str) -> String {
-    format!("{} {}", apply_rules(sentence), sentence)
+    methods::indefinite(sentence)
 }
 
 /// Returns the input string with the article related to the first word with the first letter capitalised
@@ -67,7 +69,7 @@ pub fn indefinite(sentence: &str) -> String {
 /// assert_eq!(indefinite_capitalized("banana"), "A banana");
 /// ```
 pub fn indefinite_capitalized(sentence: &str) -> String {
-    Helper::capitalize(&format!("{} {}", apply_rules(sentence), sentence))
+    methods::indefinite_capitalized(sentence)
 }
 
 /// Returns only the article related to the first word
@@ -81,7 +83,7 @@ pub fn indefinite_capitalized(sentence: &str) -> String {
 /// assert_eq!(indefinite_article_only("pear"), "a");
 /// ```
 pub fn indefinite_article_only(sentence: &str) -> String {
-    apply_rules(sentence)
+    methods::indefinite_article_only(sentence)
 }
 
 /// Returns only the article related to the first word with the first letter capitalised
@@ -95,19 +97,7 @@ pub fn indefinite_article_only(sentence: &str) -> String {
 /// assert_eq!(indefinite_article_only_capitalized("pear"), "A");
 /// ```
 pub fn indefinite_article_only_capitalized(sentence: &str) -> String {
-    Helper::capitalize(&apply_rules(sentence))
-}
-
-fn apply_rules(sentence: &str) -> String {
-    let word = &Helper::get_first_word(sentence);
-
-    if rules::number::Number::check(word) {
-        rules::number::Number::run(word)
-    } else if rules::acronym::Acronym::check(word) {
-        rules::acronym::Acronym::run(word)
-    } else {
-        rules::other::Other::run(word)
-    }
+    methods::indefinite_article_only_capitalized(sentence)
 }
 
 #[cfg(test)]

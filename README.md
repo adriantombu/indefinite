@@ -15,32 +15,45 @@ Prefix a noun with an indefinite article - a or an - based on whether it begins 
 ## Usage
 
 ```rust
-use indefinite::indefinite;
+use indefinite::*;
 
-assert_eq!(indefinite("honor"), "an honor");
-assert_eq!(indefinite("euro"), "a euro");
-assert_eq!(indefinite("ukulele"), "a ukulele");
-assert_eq!(indefinite("ouija board"), "a ouija board");
+fn main () {
+    assert_eq!(indefinite("honor"), "an honor");
+    assert_eq!(indefinite("ouija board"), "a ouija board");
+
+    assert_eq!(indefinite_capitalized("apple"), "An apple");
+    assert_eq!(indefinite_capitalized("banana"), "A banana");    
+
+    assert_eq!(indefinite_article_only("apple"), "an");
+    assert_eq!(indefinite_article_only("pear"), "a");
+
+    assert_eq!(indefinite_article_only_capitalized("apple"), "An");
+    assert_eq!(indefinite_article_only_capitalized("pear"), "A");  
+}
+```
+
+## Macros
+
+Macros are available as a feature. They are working the same as the functions, except they also accept a list of inputs.
+
+```toml
+indefinite = { version = "0.1", features = [ "macros" ] }
 ```
 
 ```rust
-use indefinite::indefinite_capitalized;
+use indefinite::*;
 
-assert_eq!(indefinite_capitalized("apple"), "An apple");
-assert_eq!(indefinite_capitalized("banana"), "A banana");
-```
+fn main () {
+    assert_eq!(indefinite!("honor"), "an honor");
+    assert_eq!(indefinite!("honor", "euro"), ["an honor", "a euro"]);
 
-```rust
-use indefinite::indefinite_article_only;
+    assert_eq!(indefinite_capitalized!("apple"), "An apple");
+    assert_eq!(indefinite_capitalized!("banana", "pear"), ["A banana", "A pear"]); 
 
-assert_eq!(indefinite_article_only("apple"), "an");
-assert_eq!(indefinite_article_only("pear"), "a");
-```
+    assert_eq!(indefinite_article_only!("apple"), "an");
+    assert_eq!(indefinite_article_only!("apple","pear"), ["an", "a"]);
 
-
-```rust
-use indefinite::indefinite_article_only_capitalized;
-
-assert_eq!(indefinite_article_only_capitalized("apple"), "An");
-assert_eq!(indefinite_article_only_capitalized("pear"), "A");
+    assert_eq!(indefinite_article_only_capitalized!("apple"), "An");
+    assert_eq!(indefinite_article_only_capitalized!("apple", "pear"), ["An", "A"]);
+}
 ```
