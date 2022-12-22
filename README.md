@@ -1,7 +1,5 @@
 [![crates.io](https://img.shields.io/crates/v/indefinite.svg)](https://crates.io/crates/indefinite) [![docs.rs](https://img.shields.io/docsrs/indefinite/latest.svg)](https://docs.rs/indefinite/latest/indefinite/index.html)
 
-
-
 # indefinite
 
 > This crate is a port of the [JavaScript library indefinite](https://github.com/tandrewnichols/indefinite), thanks to the original authors of this library!
