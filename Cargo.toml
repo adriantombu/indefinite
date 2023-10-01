@@ -1,6 +1,6 @@
 [package]
 name = "indefinite"
-version = "0.1.6"
+version = "0.1.7"
 edition = "2021"
 authors = ["Adrian Tombu <adrian@otso.fr>"]
 keywords = [ "article", "a", "an", "grammar", "noun" ]
@@ -12,7 +12,7 @@ documentation = "https://docs.rs/indefinite/latest/indefinite/index.html"
 include = ["/src", "LICENSE.md", "README.md"]
 
 [dependencies]
-regex = "1.7.0"
+regex = "1.9"
 
 [features]
 macros = []
