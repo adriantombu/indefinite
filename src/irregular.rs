@@ -1,4 +1,4 @@
-pub const LIST: [&str; 118] = [
+pub const LIST: [&str; 119] = [
     // Nouns: eu like y
     "eunuch",
     "eucalyptus",
@@ -26,6 +26,7 @@ pub const LIST: [&str; 118] = [
     "honesty",
     "honor",
     "honour",
+    "honoree",
     "hour",
     // Adjectives: silent h
     "honest",
